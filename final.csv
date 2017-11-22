@@ -1,0 +1,4 @@
+PUT 2, R1
+PUT 3, R2
+SUM R1, R2, R3
+OUT R3
