@@ -1,0 +1,36 @@
+CLR
+
+INP R8
+STR 0, R7
+STR 0, R2
+
+sum_nums
+INP R1
+ADD R1, R2, R2
+ADD 1, R7, R7
+JME R7, R8
+JMP sum_nums
+
+OUT R2
+HLT
+
+
+
+INP R1
+INP R3
+ADD 3, 10, R1
+SUB R1, R4, R5
+JMP end
+OUT R5
+OUT R4
+ARR 5, arr1
+STR R1, R1
+STR arr1, R2
+loop_start
+ADD R2, R3, R3
+ADD R2, 1, R2
+ADD 1, R1, R1
+JME 5, R1
+JMP loop_start
+end
+HLT

@@ -1,0 +1,154 @@
+*****************************
+FINAL PROJECT 
+*****************************
+
+Members: Alejandro Alcaraz
+         Carlos Cisneros
+         Saul Huerta
+
+
+***** QUESTIONS ***** 
+// To each other or about anything we are confused on for the project
+
+1) ASSEMBLER: Should we have a function that will terminate the program if
+there is an error? It could tell the user what line the error is on
+
+
+*2) Do switch statements only work with characters and ints?
+YES, YES THEY DO
+
+3) In our simulator, how do we find labels?
+
+
+***** PROJECT PLAN *****
+We will read our instructions and binary by breaking up each part
+line. We will break up and access each line using functions. We will
+have one function to interpret the instruction in both cpp files.
+And in each instruction converter, we will use if statements that
+will be used depending on the action required.
+
+
+***** PROJECT DETAILS *****
+
+DESCRIPTION:
+
+We will make an assembler that will read in instructions from a text file.
+The assmebler will convert the instructions into binary as needed and save
+them into another text file. A simulator will then convert the binary
+instructions into actual output that the user can read and interact
+with. 
+
+
+
+LIMITATIONS:
+*1) Jumps labels must be made before they are called
+ ^ RESOLVED
+2) Cannot use an array before it has bee
+
+INSTRUCTIONS:
+
+         ARITHMETIC
+add               ADD      00000 
+subtract          SUB      00001
+multiply          MUL      00010
+divide            DIV      00011
+
+         ACCESS
+input             INP      00100
+output            OUT      00101
+store             STR      00111
+
+         JUMPS
+jump              JMP      01000    *** how? -> 1) jump through txt file? 2) remember txt lines?
+jump =            JME      01001
+jump >            JMG      01010
+jump >=           JGE      01011
+jump <            JML      01100
+jump <=           JLE      01101
+jump !=           JNE      10011
+
+         RESET
+clear             CLR      01111
+
+         ARRAY
+array             ARR      10000
+
+         LABELING
+jump labels                10001
+
+         HALT
+halt              HLT      11111
+
+
+
+
+
+***** Instruction length and structure *****
+
+1) Arithmetic Type
+Inst     Reg/Literal    Reg/Literal          Power bits  Reg-3
+00000    00000000       00000000             000          000
+         ex)
+ADD 1, 3, R3
+SUB R1, R2, R3
+MUL 1, R2, R3
+DIV R1, 1, R3
+
+
+2) Access Type
+* store
+Instr    Offset            Reg/Lit           Action   Register
+00000    00000000          00000000          000      000
+         ex)
+STR 0, R1
+STR R1, R2
+STR arr1, R2
+
+* input / output
+Instr    Offset            Offset            Offsest   Register
+00000    00000000          00000000          000      000
+         ex)
+INP R1
+OUT R2
+
+3) Arrays
+* making arrays
+Signal   Literal/Reg       Label             Action   Offset
+00000    00000000          00000000          000      000
+         ex) 
+ARR 5, arr1
+ARR 6, arr2
+
+* accessing arrays
+Access   Size              Label             Offset
+00000    00000000          00000000          000000
+         ex)
+STR arr1, R1
+OUT R1
+ADD R1, 1, R1
+OUT R1
+
+
+4) Jumps
+* find labels
+Signal   Offset            Offsest           Label
+00000    00000000          00000000          000000
+         ex)
+JMP loop_start
+JMP sum_nums
+
+* making labels
+Signal   Offset            Offset            Label
+00000    00000000          00000000          000000
+         ex)
+loop_start
+
+JMP loop_start
+
+* jumps with conditions
+Instr    Reg/Lit           Reg               P.Bits   Offset
+00000    00000000          00000000          000      000
+         ex)
+JME 1, R1
+JNE R1, R2
+         

@@ -1,0 +1,36 @@
+ARR 5, arr1
+
+STR arr1, R8
+
+enter_in
+INP R1
+STR R1, R8
+ADD R8, 1, R8
+JME 5, R8
+JMP enter_in
+
+CLR
+
+STR arr1, R8
+INP R1
+STR 1, R3
+
+check_arr
+JME R1, R8
+JMP found
+ADD R8, 1, R8
+JME 5, R8
+JMP check_arr
+JMP not_found
+
+not_found
+CLR
+STR 10, R1
+OUT R1
+HLT
+
+found
+CLR
+STR 20, R1
+OUT R1
+HLT

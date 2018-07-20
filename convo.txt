@@ -1,0 +1,9 @@
+So let's start by working on the assembler.
+
+I am going to add a boolean to the function to determine whether the
+program has any errors or not. 
+*   For example, if they try to input too large of a value, it will tell them
+the isntruction with the error and describe the problem. 
+  
+    
+    
